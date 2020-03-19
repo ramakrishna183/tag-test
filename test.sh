@@ -3,7 +3,6 @@ date
 
 date
 
-time
-
+echo "removed time"
 echo "fist trigger"
 date
