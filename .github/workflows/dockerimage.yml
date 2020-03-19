@@ -12,8 +12,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       env:
-        DOCKERHUB: ${{ secrets.MY_DOKERHUB }}
-        DOCKERHUB_KEY: ${{ secrets.MY_DOKERHUB }}
+        MY_DOCKERHUB: ${{ secrets.MY_DOKERHUB }}
+        MY_DOCKERHUB_KEY: ${{ secrets.MY_DOKERHUB }}
       run: |
         ls -l
         echo "Docker login"
