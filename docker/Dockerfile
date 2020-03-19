@@ -1,5 +1,6 @@
 # Start from a Debian image with the latest version of Go installed
 # and a workspace (GOPATH) configured at /go.
+# Heimdall docker file
 FROM golang:latest
 
 # update available packages
@@ -16,6 +17,7 @@ RUN mkdir -p /go/src/github.com/maticnetwork/ \
 # change work directory
 WORKDIR /go/src/github.com/maticnetwork/
 # ADD . /go/src/github.com/maticnetwork/heimdall/
+
 RUN git clone https://github.com/maticnetwork/heimdall.git
 
 # change work directory
