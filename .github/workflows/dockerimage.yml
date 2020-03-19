@@ -12,12 +12,12 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       env:
-        MY_DOCKERHUB: ${{ secrets.MY_DOKERHUB }}
-        MY_DOCKERHUB_KEY: ${{ secrets.MY_DOKERHUB }}
+        DOCKERHUB: ${{ secrets.DOCKERHUB }}
+        DOCKERHUB_KEY: ${{ secrets.DOCKERHUB_KEY }}
       run: |
         ls -l
         echo "Docker login"
-        docker login -u $MY_DOKERHUB -p $MY_DOKERHUB_KEY
+        docker login -u $DOCKERHUB -p $DOCKERHUB_KEY
         echo "running build"
         docker build -f docker/Dockerfile -t kosaraju333/heimdall:'v*.*.*' .
         echo "pushing image"
