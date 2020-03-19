@@ -1,0 +1,26 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+    tags: 
+      - 'v*.*.*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      env:
+        DOCKERHUB: ${{ secrets.MY_DOKERHUB }}
+        DOCKERHUB_KEY: ${{ secrets.MY_DOKERHUB }}
+      run: |
+        ls -l
+        echo "Docker login"
+        docker login -u $MY_DOKERHUB -p $MY_DOKERHUB_KEY
+        echo "running build"
+        docker build -f docker/Dockerfile -t kosaraju333/heimdall:'v*.*.*' .
+        echo "pushing image"
+        docker push kosaraju333/heimdall:'v*.*.*'
+        echo "DONE!"
+    
