@@ -20,8 +20,8 @@ jobs:
         echo "Docker login"
         docker login -u $DOCKERHUB -p $DOCKERHUB_KEY
         echo "running build"
-        docker build -f docker/Dockerfile -t kosaraju333/heimdall:${GITHUB_REF/refs\/tags\//} .
+        docker build -f docker/Dockerfile -t maticnetwork/heimdall_dev:${GITHUB_REF/refs\/tags\//} .
         echo "pushing image"
-        docker push kosaraju333/heimdall:${GITHUB_REF/refs\/tags\//}
+        docker push maticnetwork/heimdall_dev:${GITHUB_REF/refs\/tags\//}
         echo "DONE!"
     
