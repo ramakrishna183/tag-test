@@ -2,8 +2,10 @@ name: Docker Image CI
 
 on:
   push:
+    branches: [ master ]
     tags: 
-      - '*'
+      - 'v*.*.*'
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,8 +20,8 @@ jobs:
         echo "Docker login"
         docker login -u $DOCKERHUB -p $DOCKERHUB_KEY
         echo "running build"
-        docker build -f docker/Dockerfile -t kosaraju333/heimdall:'v0.1' .
+        docker build -f docker/Dockerfile -t kosaraju333/heimdall:${GITHUB_REF/refs\/tags\//} .
         echo "pushing image"
-        docker push kosaraju333/heimdall:'v0.1'
+        docker push kosaraju333/heimdall:${GITHUB_REF/refs\/tags\//}
         echo "DONE!"
     
